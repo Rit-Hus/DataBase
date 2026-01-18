@@ -19,5 +19,6 @@ JOIN course_instance ci ON ci.course_instance_id = pa.course_instance_id
 JOIN course_layout cl ON cl.course_layout_id = ci.course_layout_id
 JOIN period p ON p.period_id = ci.period_id
 WHERE LEFT(ci.instance_id, 4)::int = EXTRACT(YEAR FROM CURRENT_DATE)::int
+AND e.employee_id = 2
 GROUP BY cl.course_code, ci.instance_id, cl.hp, p.period_name, per.first_name
 ORDER BY per.first_name, ci.instance_id;
